@@ -1,0 +1,49 @@
+{% extends "layout.html" %}
+{% block body %}
+<!--Form para pedir informacion personal-->
+<!--Perfil
+      Nombre completo
+      Trabajo deseado
+      Descripcion de si mismo
+      Habilidades tecnicas
+      Habilidades Personales
+      telefono
+      correo
+      ciudad - pais-->
+<div class="col-md-6">
+  <div class="card card-body">
+    <h3>Perfil</h3>
+    <form action="/education" method="POST">
+      <div class="form-group">
+        <input type="text" class="form-control" name="fullname" placeholder="Full Name">
+      </div>
+      <div class="form-group">
+        <input type="text" class="form-control" name="job" placeholder="Desired job">
+      </div>
+      <div class="form-group">
+        <textarea name="description" class="form-control" placeholder="Description"></textarea>
+      </div>
+      <div class="form-group">
+        <textarea name="skills_professional" class="form-control" placeholder="Professional Skills: "></textarea>
+      </div>
+      <div class="form-group">
+        <textarea name="skills_personal" class="form-control" placeholder="Personal Skills: "></textarea>
+      </div>
+      <div class="form-group">
+        <input type="text" class="form-control" name="phone" placeholder="Phone">
+      </div>
+      <div class="form-gruop">
+        <input type="text" class="form-control" name="email" placeholder="Email">
+      </div>
+      <div class="form-group">
+        <input type="text" class="form-control" name="city" placeholder="City">
+      </div>
+      <div>
+      </div>
+      <button class="btn btn-primary btn-block">
+        Next
+      </button>
+    </form>
+  </div>
+</div>
+{% endblock %}

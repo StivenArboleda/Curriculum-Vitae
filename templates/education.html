@@ -1,0 +1,70 @@
+{% extends "layout.html" %}
+{% block body %}
+<!--Form para pedir informacion profesional-->
+<!--Debe haber un boton que permite agregar mas campos de Educacion-->
+<!--Educacion
+        Titulo/Carrera
+        Año de finilizacion
+        Ciudad y Pais
+        Universidad o Institucion
+-->
+
+<div class="col-md-6">
+    <a href="/">
+        <button class="btn btn-primary btn-danger">
+            Cancel
+        </button>
+    </a>
+    <hr>
+    <label for="max_edu" class="form-gruup ">
+        Cantidad de cursos educativos (maximo 3)
+    </label>
+    <select onchange="change()" name="max_edu" id="max_edu" class="form-group form-control">
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+    </select>
+    <script>
+        document.getElementById("max_edu").value = {{ max | tojson }};
+        console.log(max);
+    </script>
+    <br>
+    <script>
+        function change() {
+            var ammount = document.getElementById("max_edu").value;
+            location.href = "/education/" + ammount+"/{{data}}";
+        }
+    </script>
+    <form action="/professional/{{data}}" method="POST">
+
+        {% for i in range(max) %}
+        <div class="card card-body">
+            <h3>Educacion {{i+1}}</h3>
+            <div class="form-group">
+                <input type="text" class="form-control" name="carrera{{i}}" placeholder="carrera">
+            </div>
+            <div class="form-group">
+                <input type="text" class="form-control" name="universidad{{i}}" placeholder="Universidad o Institucion">
+            </div>
+            <div class="form-group">
+                <input type="text" class="form-control" name="paisEdu{{i}}" placeholder="Pais">
+            </div>
+            <div class="form-group">
+                <input type="text" class="form-control" name="ciudadEdu{{i}}" placeholder="Ciudad">
+            </div>
+            <div class="form-group">
+                <input type="text" class="form-control" name="yearEdu{{i}}" placeholder="Año de finilizacion">
+            </div>
+            <br>
+            <br>
+        </div>
+        <br>
+       
+        {% endfor %}
+        <button type="submit" class="btn btn-primary">
+            Next
+        </button>
+    </form>
+    
+</div>
+{% endblock %}

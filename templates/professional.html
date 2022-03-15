@@ -1,0 +1,81 @@
+{% extends "layout.html" %}
+{% block body %}
+<!--Form para pedir informacion profesional-->
+<!--Debe haber un boton que permite agregar mas campos de Educacion-->
+<!--Profesional
+        Nombre de la empresa
+        Ciudad y Pais
+        Fecha inicio y Fecha Fin
+        Puesto/Cargo
+        Descripcion
+-->
+
+<div class="col-md-6">
+    <a href="/">
+        <button class="btn btn-primary btn-danger">
+            Cancel
+        </button>
+    </a>
+    <hr>
+    <label for="max_edu" class="form-gruup ">
+        Cantidad de experiencias profesionales (maximo 3)
+    </label>
+    <select onchange="change()" name="max_edu" id="max_edu" class="form-group form-control">
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+    </select>
+    <script>
+        document.getElementById("max_edu").value = {{ max | tojson }};
+        console.log(max);
+    </script>
+    <br>
+    <script>
+        function change() {
+            var ammount = document.getElementById("max_edu").value;
+            location.href = "/professional/" + ammount+"/{{data}}";
+        }
+    </script>
+    <form action="/download/{{data}}" method="POST">
+
+        {% for i in range(max) %}
+        <div class="card card-body">
+            <h3>Experiencia {{i+1}}</h3>
+            <div class="form-group">
+                <input type="text" class="form-control" name="empresa{{i}}" placeholder="Nombre de la Empresa">
+            </div>
+            <div class="form-group">
+                <input type="text" class="form-control" name="paisPro{{i}}" placeholder="Pais">
+            </div>
+            <div class="form-group">
+                <input type="text" class="form-control" name="ciudadPro{{i}}" placeholder="Ciudad">
+            </div>
+            <div class="form-group">
+                <p>Fecha inicio: </p>
+                <input type="date" class="form-control" name="fecha_inicioPro{{i}}" placeholder="Fecha inicio">
+            </div>
+            <div class="form-group">
+                <p>Fecha fin: </p>
+                <input type="date" class="form-control" name="fecha_finPro{{i}}" placeholder="Fecha fin">
+            </div>
+            <div class="form-group">
+                <input type="text" class="form-control" name="puestoPro{{i}}" placeholder="Puesto/Cargo">
+            </div>
+            <div class="form-group">
+                <textarea  class="form-control" name="descripcionPro{{i}}" placeholder="descripcion"></textarea>
+            </div>
+            <br>
+            <br>
+        </div>
+        <br>
+
+        {% endfor %}
+        <a href="/">
+            <button type="submit" class="btn btn-primary btn-block">
+                SEND
+            </button>
+        </a>
+    </form>
+    <br>
+</div>
+{% endblock %}
