@@ -25,6 +25,19 @@ Basic system to create a resume in PDF format. The template is previously loaded
   - Final date
   - Position
   - Description
+ 
+### Tools
+<img align="left" height="50px" width="50px" alt="VS logo" src="https://www.vectorlogo.zone/logos/visualstudio_code/visualstudio_code-icon.svg">
+<br>
+</br>
+<br>
+
+<img align="left" height="50px" width="50px" alt="VS logo" src="https://cdn.worldvectorlogo.com/logos/python-5.svg">
+<br>
+</br>
+<br>
+<img align="left" height="50px" width="50px" alt="VS logo" src="https://cdn.worldvectorlogo.com/logos/html-1.svg">
+<br>
 
 ### Aspects to improve:
 
